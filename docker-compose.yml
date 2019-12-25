@@ -4,6 +4,11 @@ services:
   web:
     build: ./web
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./web/htdocs/:/usr/local/apache2/htdocs/
+
+  reverseproxy:
+    build: ./reverseproxy
+    ports:
+      - "443:443"
