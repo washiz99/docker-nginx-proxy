@@ -1,14 +1,14 @@
 version: '3'
 
 services:
+  reverse-proxy:
+    build: ./reverse-proxy
+    ports:
+      - "443:443"
+
   web:
     build: ./web
     ports:
       - "8080:80"
     volumes:
       - ./web/htdocs/:/usr/local/apache2/htdocs/
-
-  reverseproxy:
-    build: ./reverseproxy
-    ports:
-      - "443:443"
