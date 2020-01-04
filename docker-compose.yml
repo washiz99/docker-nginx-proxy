@@ -4,11 +4,14 @@ services:
   reverse-proxy:
     build: ./reverse-proxy
     ports:
+      - "80:80"
       - "443:443"
 
   web:
     build: ./web
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     volumes:
       - ./web/htdocs/:/usr/local/apache2/htdocs/
+    depends_on:
+      - reverse-proxy
